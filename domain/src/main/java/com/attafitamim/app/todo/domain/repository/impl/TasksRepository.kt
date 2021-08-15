@@ -2,13 +2,13 @@ package com.attafitamim.app.todo.domain.repository.impl
 
 import com.attafitamim.app.todo.domain.model.Task
 import com.attafitamim.app.todo.domain.repository.ITasksRepository
-import com.attafitamim.app.todo.domain.repository.source.TasksLocalDataSource
-import com.attafitamim.app.todo.domain.repository.source.TasksRemoteDataSource
+import com.attafitamim.app.todo.domain.repository.source.ITasksLocalDataSource
+import com.attafitamim.app.todo.domain.repository.source.ITasksRemoteDataSource
 import com.attafitamim.app.todo.domain.utils.IConnectionManager
 
 class TasksRepository(
-    private val localDataSource: TasksLocalDataSource,
-    private val remoteDataSource: TasksRemoteDataSource,
+    private val localDataSource: ITasksLocalDataSource,
+    private val remoteDataSource: ITasksRemoteDataSource,
     private val connectionManager: IConnectionManager
 ) : ITasksRepository {
 
