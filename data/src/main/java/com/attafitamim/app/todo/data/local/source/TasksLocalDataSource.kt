@@ -1,6 +1,6 @@
 package com.attafitamim.app.todo.data.local.source
 
-import com.attafitamim.app.todo.data.local.converters.TasksConverter
+import com.attafitamim.app.todo.data.local.converters.LocalTaskConverter
 import com.attafitamim.app.todo.data.local.db.Database
 import com.attafitamim.app.todo.domain.model.Task
 import com.attafitamim.app.todo.domain.repository.source.ITasksLocalDataSource
@@ -12,17 +12,17 @@ class TasksLocalDataSource(private val database: Database) : ITasksLocalDataSour
         val limit = PAGE_SIZE
         val offset = (page - MIN_PAGE_NUMBER) * limit
         val localTasks = database.tasksDao.getTasksPage(limit, offset)
-        return localTasks.map(TasksConverter::convertToTask)
+        return localTasks.map(LocalTaskConverter::convertToTask)
     }
 
     override suspend fun saveTasksPage(tasks: List<Task>) {
-        val localTasks = tasks.map(TasksConverter::convertToLocal)
+        val localTasks = tasks.map(LocalTaskConverter::convertToLocal)
         database.tasksDao.insertTasksPage(localTasks)
     }
 
     override suspend fun getTask(id: Int): Task {
         val localTask = database.tasksDao.getTask(id)
-        return TasksConverter.convertToTask(localTask)
+        return LocalTaskConverter.convertToTask(localTask)
     }
 
     private companion object {

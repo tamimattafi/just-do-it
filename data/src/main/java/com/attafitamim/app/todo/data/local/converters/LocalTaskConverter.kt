@@ -4,7 +4,7 @@ import com.attafitamim.app.todo.data.local.model.LocalTask
 import com.attafitamim.app.todo.domain.model.Task
 import java.util.*
 
-internal object TasksConverter {
+internal object LocalTaskConverter {
 
     fun convertToLocal(task: Task): LocalTask {
         val dueTime = task.dueDate.time
