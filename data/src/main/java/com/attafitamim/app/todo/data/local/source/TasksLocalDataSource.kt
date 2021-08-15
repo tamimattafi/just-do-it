@@ -2,10 +2,17 @@ package com.attafitamim.app.todo.data.local.source
 
 import com.attafitamim.app.todo.data.local.converters.LocalTaskConverter
 import com.attafitamim.app.todo.data.local.db.Database
+import com.attafitamim.app.todo.data.local.db.provider.DatabaseProvider
 import com.attafitamim.app.todo.domain.model.Task
 import com.attafitamim.app.todo.domain.repository.source.ITasksLocalDataSource
 
-class TasksLocalDataSource(private val database: Database) : ITasksLocalDataSource {
+class TasksLocalDataSource(
+    private val databaseProvider: DatabaseProvider
+) : ITasksLocalDataSource {
+
+    private val database by lazy {
+        databaseProvider.provide(Database.NAME, Database::class.java)
+    }
 
     override suspend fun getTasksPage(page: Int): List<Task> {
         require(page >= MIN_PAGE_NUMBER)

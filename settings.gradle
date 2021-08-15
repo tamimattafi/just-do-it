@@ -7,6 +7,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Just Do It"
-include ':ui'
+include ':app'
 include ':domain'
 include ':data'

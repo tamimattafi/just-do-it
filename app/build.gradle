@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -56,6 +57,16 @@ dependencies {
     implementation "com.arkivanov.mvikotlin:mvikotlin:$mvi_version"
     implementation "com.arkivanov.mvikotlin:mvikotlin-main:$mvi_version"
     implementation "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:$mvi_version"
+
+    //Dependency Injection
+    def koin_version = "3.1.2"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+
+    //Business logic
+    implementation project(":domain")
+    implementation project(":data")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

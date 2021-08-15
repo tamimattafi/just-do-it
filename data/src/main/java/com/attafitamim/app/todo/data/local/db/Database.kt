@@ -12,10 +12,11 @@ import com.attafitamim.app.todo.data.local.model.LocalTask
     version = VERSION,
     exportSchema = EXPORT_SCHEME
 )
-abstract class Database : RoomDatabase() {
-    internal abstract val tasksDao: LocalTasksDao
+internal abstract class Database : RoomDatabase() {
+    abstract val tasksDao: LocalTasksDao
 
-    internal companion object {
+    companion object {
+        const val NAME = "main-db"
         const val VERSION = 1
         const val EXPORT_SCHEME = false
     }

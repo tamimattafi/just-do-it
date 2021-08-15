@@ -1,4 +1,4 @@
-package com.attafitamim.app.todo.data.remote.client.calls.provider
+package com.attafitamim.app.todo.data.remote.client.provider
 
 import com.attafitamim.app.todo.data.remote.client.calls.ITasksHttpClient
 import com.attafitamim.app.todo.data.remote.client.calls.constants.RemotePaths
@@ -13,11 +13,11 @@ class HttpClientProvider {
     }
 
     @Volatile
-    private var tasksClient: ITasksHttpClient? = null
+    private var tasksClientInstance: ITasksHttpClient? = null
 
-    internal fun provideTasksClient(): ITasksHttpClient = synchronized(this) {
-        tasksClient ?: retrofit
+    internal val tasksClient get() = synchronized(this) {
+        tasksClientInstance ?: retrofit
             .create(ITasksHttpClient::class.java)
-            .also(this::tasksClient::set)
+            .also(this::tasksClientInstance::set)
     }
 }
