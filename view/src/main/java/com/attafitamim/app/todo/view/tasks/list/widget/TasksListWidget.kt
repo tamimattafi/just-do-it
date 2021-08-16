@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
@@ -15,12 +16,14 @@ import com.attafitamim.app.todo.domain.model.Task
 import com.attafitamim.app.todo.view.R
 import com.attafitamim.app.todo.view.common.styles.DefaultPadding
 import com.attafitamim.app.todo.view.common.widgets.StateItem
+import com.attafitamim.app.todo.view.main.navigation.NavigationScreens
+import com.attafitamim.app.todo.view.main.navigation.navigate
 import com.attafitamim.app.todo.view.tasks.list.model.TasksListSideEffect
 import com.attafitamim.app.todo.view.tasks.list.model.TasksListViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
-fun TasksList(viewModel: TasksListViewModel) {
+fun TasksList(viewModel: TasksListViewModel, navController: NavController) {
     val state = viewModel.container.stateFlow.collectAsState().value
 
     val lazyTasks = state.tasksFlow?.collectAsLazyPagingItems()
@@ -32,12 +35,13 @@ fun TasksList(viewModel: TasksListViewModel) {
     LaunchedEffect(viewModel) {
         viewModel.container.sideEffectFlow.collectLatest { sideEffect ->
             when (sideEffect) {
-                is TasksListSideEffect.OpenTaskDetails -> TODO()
+                is TasksListSideEffect.OpenTaskDetails -> navController.navigate(
+                    NavigationScreens.TASK_DETAILS,
+                    sideEffect.taskId
+                )
             }
         }
     }
-
-    viewModel.prepare()
 }
 
 @Composable

@@ -7,18 +7,18 @@ import org.koin.dsl.module
 
 val tasksListModule = module {
 
-    single {
+    factory {
         TasksListViewModel(get(), get())
     }
 
-    single {
+    factory {
         TasksSource(get())
     }
 }
 
 val taskDetailsModule = module {
 
-    single {
-        TaskDetailsViewModel(get())
+    factory { parameters ->
+        TaskDetailsViewModel(get(), parameters.get())
     }
 }

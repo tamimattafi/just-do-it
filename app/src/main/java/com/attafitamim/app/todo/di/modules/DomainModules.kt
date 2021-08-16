@@ -16,6 +16,6 @@ val domainModule = module {
 
     single<ITasksRepository> { TasksRepository(get(), get(), get()) }
 
-    single<IConnectionManager> { ConnectionManager(get()) }
+    factory<IConnectionManager> { ConnectionManager(get()) }
 }
 

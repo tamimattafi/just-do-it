@@ -8,7 +8,8 @@ import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 
 class TaskDetailsViewModel(
-    val getTask: GetTask
+    private val getTask: GetTask,
+    private val taskId: Int
 ): ViewModel(), ContainerHost<TaskDetailsState, Unit> {
 
     override val container by lazy {
@@ -16,7 +17,11 @@ class TaskDetailsViewModel(
         container<TaskDetailsState, Unit>(initialState)
     }
 
-    fun prepare(taskId: Int) = intent {
+    init {
+        this.loadTask()
+    }
+
+    private fun loadTask() = intent {
         val task = getTask(taskId)
 
         reduce {
