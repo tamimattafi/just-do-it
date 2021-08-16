@@ -10,3 +10,4 @@ rootProject.name = "Just Do It"
 include ':app'
 include ':domain'
 include ':data'
+include ':view'
