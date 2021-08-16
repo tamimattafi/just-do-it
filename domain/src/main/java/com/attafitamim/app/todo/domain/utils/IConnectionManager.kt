@@ -3,10 +3,10 @@ package com.attafitamim.app.todo.domain.utils
 interface IConnectionManager {
     val isConnected: Boolean
 
-    fun subscribeToConnectionChange(listener: IConnectionChangeListener)
-    fun unsubscribeToConnectionChange(listener: IConnectionChangeListener)
+    fun setStateListener(listener: IStateListener)
+    fun removeStateListener(listener: IStateListener)
 
-    interface IConnectionChangeListener {
-        fun onConnectionStateChanged(isConnected: Boolean)
+    interface IStateListener {
+        fun onStateChanged(isConnected: Boolean)
     }
 }

@@ -48,6 +48,12 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
 
+    //Dependency Injection
+    def koin_version = "3.1.2"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+
     //UI and navigation
     def compose_version = "1.0.1"
     implementation "androidx.compose.ui:ui:$compose_version"
@@ -67,6 +73,7 @@ dependencies {
     def mvi_version = "4.2.0"
     implementation "org.orbit-mvi:orbit-core:$mvi_version"
     implementation "org.orbit-mvi:orbit-viewmodel:$mvi_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
 
     //Business logic
     implementation project(":domain")

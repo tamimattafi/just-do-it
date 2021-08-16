@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.attafitamim.app.todo">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:name=".components.TodoApp"
@@ -13,7 +16,7 @@
         android:theme="@style/Theme.JustDoIt"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".view.MainActivity"
+            android:name="com.attafitamim.app.todo.view.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

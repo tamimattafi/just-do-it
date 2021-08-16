@@ -16,7 +16,7 @@ internal data class RemoteTask(
 ) {
 
     companion object {
-       const val TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ"
+       const val TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
     }
 
     enum class Status {

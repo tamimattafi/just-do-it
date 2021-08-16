@@ -37,13 +37,14 @@ dependencies {
     //Dependency Injection
     def koin_version = "3.1.2"
     implementation "io.insert-koin:koin-android:$koin_version"
-    implementation "io.insert-koin:koin-android-compat:$koin_version"
-    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+
+    //Paging
+    implementation "androidx.paging:paging-runtime-ktx:3.0.1"
 
     //Business logic
     implementation project(":domain")
     implementation project(":data")
 
-    //UI
+    //UI and Navigation
     implementation project(":view")
 }

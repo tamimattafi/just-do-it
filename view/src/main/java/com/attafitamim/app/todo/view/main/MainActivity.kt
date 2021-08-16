@@ -1,15 +1,17 @@
-package com.attafitamim.app.todo.view
+package com.attafitamim.app.todo.view.main
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.Text
+import com.attafitamim.app.todo.view.tasks.list.widget.TasksList
+import org.koin.androidx.compose.get
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Text("Hello world!")
+            TasksList(viewModel = get())
         }
     }
 }
