@@ -36,6 +36,8 @@ fun TasksList(viewModel: TasksListViewModel) {
             }
         }
     }
+
+    viewModel.prepare()
 }
 
 @Composable

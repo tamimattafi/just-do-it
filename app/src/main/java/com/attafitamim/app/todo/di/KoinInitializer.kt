@@ -1,9 +1,10 @@
 package com.attafitamim.app.todo.di
 
 import android.content.Context
-import com.attafitamim.app.todo.di.KoinModules.dataModule
-import com.attafitamim.app.todo.di.KoinModules.domainModule
-import com.attafitamim.app.todo.di.KoinModules.viewModule
+import com.attafitamim.app.todo.di.modules.dataModule
+import com.attafitamim.app.todo.di.modules.domainModule
+import com.attafitamim.app.todo.di.modules.taskDetailsModule
+import com.attafitamim.app.todo.di.modules.tasksListModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -16,7 +17,8 @@ object KoinInitializer {
             modules(
                 dataModule,
                 domainModule,
-                viewModule
+                tasksListModule,
+                taskDetailsModule
             )
         }
     }

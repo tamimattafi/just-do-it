@@ -27,7 +27,7 @@ class TasksListViewModel(
         container<TasksListState, TasksListSideEffect>(initialState)
     }
 
-    init {
+    fun prepare() {
         connectionManger.setStateListener(this)
         this.loadData()
     }
