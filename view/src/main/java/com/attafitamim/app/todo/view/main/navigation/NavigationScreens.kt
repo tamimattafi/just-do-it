@@ -1,28 +1,17 @@
 package com.attafitamim.app.todo.view.main.navigation
 
-import androidx.navigation.compose.NamedNavArgument
-import com.attafitamim.app.todo.view.main.navigation.NavigationScreens.Routes.TASKS_LIST_ROUTE
-import com.attafitamim.app.todo.view.main.navigation.NavigationScreens.Routes.TASK_DETAILS_ROUTE
-
 enum class NavigationScreens(
     val screenName: String,
-    val rawRoute: String = screenName,
-    val arguments: List<NamedNavArgument> = emptyList()
+    val navigationArguments: List<NavigationArguments> = emptyList()
 ) {
-    TASKS_LIST(screenName = TASKS_LIST_ROUTE),
+    TASKS_LIST(screenName = "tasks_list"),
     TASK_DETAILS(
-        screenName = TASK_DETAILS_ROUTE,
-        rawRoute = rawRoute(
-            TASK_DETAILS_ROUTE,
-            NavigationArguments.TASK_ID.key
-        ),
-        arguments = listOf(NavigationArguments.TASK_ID.argument)
+        screenName = "task_details",
+        navigationArguments = listOf(NavigationArguments.TASK_ID)
     );
 
-    open fun argumentRoute(argument: Any?) = argumentRoute(screenName, argument)
+    val rawRoute get() = routeWithArgumentPaths(screenName, navigationArguments)
+    val arguments get() = navigationArguments.map(NavigationArguments::argument)
 
-    object Routes {
-        const val TASKS_LIST_ROUTE = "tasks_list"
-        const val TASK_DETAILS_ROUTE = "task_details"
-    }
+    open fun withArguments(arguments: List<Any>) = routeWithArguments(screenName, arguments)
 }

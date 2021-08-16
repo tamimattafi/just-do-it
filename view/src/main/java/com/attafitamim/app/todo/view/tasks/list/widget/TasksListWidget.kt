@@ -36,7 +36,7 @@ fun TasksList(viewModel: TasksListViewModel, navController: NavController) {
         viewModel.container.sideEffectFlow.collectLatest { sideEffect ->
             when (sideEffect) {
                 is TasksListSideEffect.OpenTaskDetails -> navController.navigate(
-                    NavigationScreens.TASK_DETAILS,
+                    screen = NavigationScreens.TASK_DETAILS,
                     sideEffect.taskId
                 )
             }
