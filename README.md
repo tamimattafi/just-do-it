@@ -15,15 +15,19 @@ It was also a chance to learn new technologies and architectures, so some concep
 - We are interested in your skills and knowledge using databases, so database solution is what we expect.
 
 ## About the project
+- Kotlin 1.5.21
+- AGP 7.0.0
+- Gradle 7.0.2 (Groovy)
 - Clean architecture (Multi-Module)
-- MVI (MVI-Orbit)
+- MVI (Orbit)
 - Room
 - Retrofit
 - Coroutines
 - Jetpack Compose (UI and Navigation)
 - Paging 3
-- Single Activity
+- SingleActivity
 - ViewModel
 - Koin
 - Jackson
-- Flow
+- StateFlow
+- JUnit (Domain)
