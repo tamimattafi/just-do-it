@@ -16,10 +16,14 @@ It was also a chance to learn new technologies and architectures, so some concep
 
 ## About the project
 - Clean architecture (Multi-Module)
-- MVI (MVI-Kotlin)
+- MVI (MVI-Orbit)
 - Room
 - Retrofit
 - Coroutines
 - Jetpack Compose (UI and Navigation)
 - Paging 3
+- Single Activity
+- ViewModel
+- Koin
+- Jackson
 - Flow
